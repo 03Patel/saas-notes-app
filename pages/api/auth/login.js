@@ -1,25 +1,20 @@
 import prisma from "../../../lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import NextCors from 'nextjs-cors';
+
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 
 
 export default async function handler(req, res) {
-const allowedOrigins = [
-  "https://saas-notes-g33lbeju1-03patels-projects.vercel.app",
-  "https://saas-notes.vercel.app", // production domain
-];
+res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://saas-notes-p211ujmhh-03patels-projects.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-const origin = req.headers.origin;
-
-await NextCors(req, res, {
-  origin: allowedOrigins.includes(origin) ? origin : false,
-  methods: ["GET", "POST", "OPTIONS"],
-  optionsSuccessStatus: 200,
-});
 
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
