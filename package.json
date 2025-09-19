@@ -19,7 +19,8 @@
     "jsonwebtoken": "^9.0.2",
     "next": "15.5.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+     "nextjs-cors": "^2.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
